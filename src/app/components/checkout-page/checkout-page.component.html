@@ -1,0 +1,172 @@
+<!-- Place Order Page -->
+<div class="min-h-screen bg-gray-100 flex flex-col items-center py-8 px-4">
+  <!-- Container -->
+  <div class="max-w-4xl w-full bg-white shadow-lg rounded-lg p-6">
+    <!-- Heading -->
+    <div class="text-center mb-6">
+      <h1 class="text-2xl font-semibold text-gray-800">Place Your Order</h1>
+      <p class="text-gray-600">Review your order details and proceed to payment.</p>
+    </div>
+
+    <!-- Order Summary -->
+    <div class="mb-6">
+      <h2 class="text-xl font-semibold text-gray-800 mb-4">Order Summary</h2>
+      <div class="bg-gray-50 p-4 rounded-lg shadow-md">
+        <ul class="space-y-4">
+          <!-- Example Item -->
+          <li class="flex items-center justify-between border-b py-2">
+            <div class="flex items-center">
+              <div>
+                <h3 class="text-gray-800 font-medium">Product</h3>
+                <p class="text-gray-600">Quantity: {{ totalItems }}</p>
+              </div>
+            </div>
+            <p class="text-gray-800 font-medium">{{ totalPrice | currency }}</p>
+          </li>
+          <!-- Add more items as needed -->
+        </ul>
+        <div class="flex justify-between mt-4">
+          <p class="text-gray-800 font-medium">Subtotal:</p>
+          <p class="text-gray-800 font-medium">{{ totalPrice | currency }}</p>
+        </div>
+        <div class="flex justify-between mt-2">
+          <p class="text-gray-800 font-medium">Shipping:</p>
+          <p class="text-gray-800 font-medium">{{ shippingCost | currency }}</p>
+        </div>
+        <div class="flex justify-between mt-2">
+          <p class="text-gray-800 font-medium">Total:</p>
+          <p class="text-gray-800 font-medium text-lg">{{ totalPriceWithShipping | currency }}</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Payment Information -->
+    <div class="mb-6">
+      <h2 class="text-xl font-semibold text-gray-800 mb-4">Payment Information</h2>
+      
+      <!-- Payment Method Selection -->
+      <div class="flex gap-4 mb-4">
+        <!-- Credit Card -->
+        <button (click)="selectPaymentMethod('creditCard')" class="w-16 h-16 bg-gray-50 rounded-full shadow-md flex items-center justify-center cursor-pointer hover:bg-gray-100 transition">
+          <!-- Credit Card SVG Icon -->
+          <img src="/assets/credit.svg" alt="" class="w-12 h-12" >
+        </button>
+        <!-- PayPal -->
+        <button (click)="selectPaymentMethod('paypal')" class="w-16 h-16 bg-gray-50 rounded-full shadow-md flex items-center justify-center cursor-pointer hover:bg-gray-100 transition">
+          <!-- PayPal SVG Icon -->
+          <img src="/assets/paypal.svg" alt="" class="w-12 h-12">
+        </button>
+        <!-- Bank Transfer -->
+        <button (click)="selectPaymentMethod('bankTransfer')" class="w-16 h-16 bg-gray-50 rounded-full shadow-md flex items-center justify-center cursor-pointer hover:bg-gray-100 transition">
+          <!-- Bank Transfer SVG Icon -->
+          <img src="/assets/bank.svg" alt="" class="w-12 h-12">
+        </button>
+        <!-- Bitcoin -->
+        <button (click)="selectPaymentMethod('bitcoin')" class="w-16 h-16 bg-gray-50 rounded-full shadow-md flex items-center justify-center cursor-pointer hover:bg-gray-100 transition">
+          <!-- Bitcoin SVG Icon -->
+         <img src="/assets/bitcoin.svg" alt="" class="w-12 h-12">
+        </button>
+        <!-- Add more payment method buttons with icons as needed -->
+      </div>
+      
+      <!-- Payment Method Forms -->
+      <div class="bg-gray-50 p-4 rounded-lg shadow-md transition-transform duration-500 ease-in-out"
+        [ngClass]="{
+          'translate-x-0 opacity-100': selectedPaymentMethod === 'creditCard',
+          '-translate-x-full opacity-0': selectedPaymentMethod !== 'creditCard'
+        }">
+        <!-- Credit Card Payment Form -->
+        <form *ngIf="selectedPaymentMethod === 'creditCard'">
+          <div class="mb-4">
+            <label for="cardNumber" class="block text-gray-700 font-medium mb-2">Card Number</label>
+            <input [(ngModel)]="creditnum" type="text" id="cardNumber" name="cardNumber" placeholder="1234 5678 9012 3456" class="w-full p-2 border border-gray-300 rounded-lg" required>
+          </div>
+          <div class="flex gap-4 mb-4">
+            <div class="flex-1">
+              <label for="expiryDate" class="block text-gray-700 font-medium mb-2">Expiry Date</label>
+              <input [(ngModel)]="creditexp" type="text" id="expiryDate" name="expiryDate" placeholder="MM/YY" class="w-full p-2 border border-gray-300 rounded-lg" required>
+            </div>
+            <div class="flex-1">
+              <label for="cvv" class="block text-gray-700 font-medium mb-2">CVV</label>
+              <input [(ngModel)]="creditcvv" type="text" id="cvv" name="cvv" placeholder="123" class="w-full p-2 border border-gray-300 rounded-lg" required>
+            </div>
+          </div>
+        </form>
+      </div>
+      
+      <div class="bg-gray-50 p-4 rounded-lg shadow-md transition-transform duration-500 ease-in-out" [ngClass]="{
+        'translate-x-0 opacity-100': selectedPaymentMethod === 'paypal',
+        '-translate-x-full opacity-0': selectedPaymentMethod !== 'paypal'
+      }">
+        <!-- PayPal Payment Form -->
+        <form *ngIf="selectedPaymentMethod === 'paypal'">
+          <div class="mb-4">
+            <label for="paypalEmail" class="block text-gray-700 font-medium mb-2">PayPal Email</label>
+            <input [(ngModel)]="paypalmail" type="email" id="paypalEmail" name="paypalEmail" placeholder="example@example.com" class="w-full p-2 border border-gray-300 rounded-lg" required>
+          </div>
+        </form>
+      </div>
+
+      <div class="bg-gray-50 p-4 rounded-lg shadow-md transition-transform duration-500 ease-in-out" [ngClass]="{
+        'translate-x-0 opacity-100': selectedPaymentMethod === 'bankTransfer',
+        '-translate-x-full opacity-0': selectedPaymentMethod !== 'bankTransfer'
+      }">
+        <!-- Bank Transfer Payment Form -->
+        <form *ngIf="selectedPaymentMethod === 'bankTransfer'">
+          <div class="mb-4">
+            <label for="accountNumber" class="block text-gray-700 font-medium mb-2">Account Number</label>
+            <input [(ngModel)]="banknum" type="text" id="accountNumber" name="accountNumber" placeholder="1234567890" class="w-full p-2 border border-gray-300 rounded-lg" required>
+          </div>
+          <div class="mb-4">
+            <label for="bankName" class="block text-gray-700 font-medium mb-2">Bank Name</label>
+            <input [(ngModel)]="bankname" type="text" id="bankName" name="bankName" placeholder="Bank Name" class="w-full p-2 border border-gray-300 rounded-lg" required>
+          </div>
+        </form>
+      </div>
+
+      <div class="bg-gray-50 p-4 rounded-lg shadow-md transition-transform duration-500 ease-in-out" [ngClass]="{
+        'translate-x-0 opacity-100': selectedPaymentMethod === 'bitcoin',
+        '-translate-x-full opacity-0': selectedPaymentMethod !== 'bitcoin'
+      }">
+        <!-- Bitcoin Payment Form -->
+        <form *ngIf="selectedPaymentMethod === 'bitcoin'">
+          <div class="mb-4">
+            <label for="bitcoinAddress" class="block text-gray-700 font-medium mb-2">Bitcoin Address</label>
+            <input [(ngModel)]="bitcoinadress" type="text" id="bitcoinAddress" name="bitcoinAddress" placeholder="Bitcoin Address" class="w-full p-2 border border-gray-300 rounded-lg" required>
+          </div>
+        </form>
+      </div>
+      
+      <!-- Place Order Button -->
+      <button 
+  type="submit" 
+  class="w-full py-3 bg-blue-500 text-white font-medium rounded-lg hover:bg-blue-600 transition duration-300" 
+  (click)="openThankYouModal()"
+  [disabled]="conditionalfunc()"  [ngClass]="{
+    'bg-blue-500 text-white hover:bg-blue-600': !conditionalfunc(),
+    'bg-gray-400 text-gray-600 cursor-not-allowed': conditionalfunc()
+  }">
+  Place Order
+</button>
+
+    
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Thank You Modal -->
+<div *ngIf="showThankYouModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+  <div class="bg-white rounded-lg shadow-lg p-6 max-w-sm w-full">
+    <div class="flex items-center justify-center mb-4">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+      </svg>
+    </div>
+    <h2 class="text-2xl font-semibold text-gray-800 mb-4 text-center">Thank You!</h2>
+    <p class="text-gray-600 mb-4 text-center">Your order has been placed successfully.</p>
+    <p class="text-gray-800 font-medium text-center">Order Number: {{ orderNumber }}</p>
+    <button (click)="closeThankYouModal()" class="mt-4 w-full py-2 bg-green-500 text-white font-medium rounded-lg hover:bg-green-600 transition duration-300">Close</button>
+  </div>
+</div>

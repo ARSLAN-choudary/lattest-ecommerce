@@ -1,0 +1,8 @@
+@media(min-width:768px){
+    .hiding{
+        @apply block
+    }
+    .onmobile{
+        @apply hidden
+    }
+}

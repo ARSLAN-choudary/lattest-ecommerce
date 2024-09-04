@@ -1,0 +1,129 @@
+<!-- Sidebar Toggle Button -->
+<button data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar" aria-controls="default-sidebar"
+    type="button"
+    class="inline-flex items-center p-2 mt-2 ms-3  fixed top-[35px] w-fit bg-white z-[99999] lg:hidden border rounded-[5px] "
+    (click)="toggleSidebar()">
+    <img src="/assets/hamburger.svg" alt="" class="w-5 h-3 rotate-90">
+</button>
+
+<!-- Sidebar -->
+<div class=" lg:block ">
+    <aside id="default-sidebar"
+        class="fixed top-[70px] left-0 z-40 lg:w-[16%] md:w-[20%] w-[35%] h-screen transition-transform -translate-x-full lg:translate-x-0 border-e-2 dark:border-e-white "
+        aria-label="Sidebar">
+        <div class="h-full px-3 py-4 overflow-y-auto pb-20 flex flex-col justify-between bg-gray-50 custom-dark">
+            <ul class="space-y-4 font-medium">
+                <li>
+                    <p class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white group">
+                        <svg class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400" aria-hidden="true"
+                            fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M10 18l-6-5h12l-6 5zm-6-7V9l6 5 6-5v2L10 13 4 11zM5 3v3h10V3H5zm3 6H5V7h3v2zm2 2h-2v-2h2v2zm4 0h-3v-2h3v2zM5 5h10V4H5v1z">
+                            </path>
+                        </svg>
+                        <span class="ms-3">Categories</span>
+                    </p>
+                </li>
+                <li>
+                    <a class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group cursor-pointer"
+                        (click)="navigateToCategory('men')">
+                        <svg class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                            aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M6 2c2.1 0 4.5 1.9 6 4.3V2h2v6H8V6h2.8C9.7 4.2 8 3 6 3S3 4.2 3 6v1c0 1.1.9 2 2 2h6v4c0 1.1-.9 2-2 2s-2-.9-2-2H5c0 1.6 1.4 3 3 3s3-1.4 3-3v-4h2v-1c0-2.8-3-6-6-6S0 4.2 0 7v1c0 2.8 3 6 6 6s6-3.2 6-6V6C12 4.2 8.1 2 6 2z">
+                            </path>
+                        </svg>
+                        <span class="ms-3">Men</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group cursor-pointer"
+                        (click)="navigateToCategory('women')">
+                        <svg class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                            aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M6 2c2.1 0 4.5 1.9 6 4.3V2h2v6H8V6h2.8C9.7 4.2 8 3 6 3S3 4.2 3 6v1c0 1.1.9 2 2 2h6v4c0 1.1-.9 2-2 2s-2-.9-2-2H5c0 1.6 1.4 3 3 3s3-1.4 3-3v-4h2v-1c0-2.8-3-6-6-6S0 4.2 0 7v1c0 2.8 3 6 6 6s6-3.2 6-6V6C12 4.2 8.1 2 6 2z">
+                            </path>
+                        </svg>
+                        <span class="ms-3">Women</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group cursor-pointer"
+                        (click)="navigateToCategory('jewelery')">
+                        <svg class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                            aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M6 2c2.1 0 4.5 1.9 6 4.3V2h2v6H8V6h2.8C9.7 4.2 8 3 6 3S3 4.2 3 6v1c0 1.1.9 2 2 2h6v4c0 1.1-.9 2-2 2s-2-.9-2-2H5c0 1.6 1.4 3 3 3s3-1.4 3-3v-4h2v-1c0-2.8-3-6-6-6S0 4.2 0 7v1c0 2.8 3 6 6 6s6-3.2 6-6V6C12 4.2 8.1 2 6 2z">
+                            </path>
+                        </svg>
+                        <span class="ms-3">jewelery</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group cursor-pointer"
+                        (click)="navigateToCategory('electronics')">
+                        <svg class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                            aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M6 2c2.1 0 4.5 1.9 6 4.3V2h2v6H8V6h2.8C9.7 4.2 8 3 6 3S3 4.2 3 6v1c0 1.1.9 2 2 2h6v4c0 1.1-.9 2-2 2s-2-.9-2-2H5c0 1.6 1.4 3 3 3s3-1.4 3-3v-4h2v-1c0-2.8-3-6-6-6S0 4.2 0 7v1c0 2.8 3 6 6 6s6-3.2 6-6V6C12 4.2 8.1 2 6 2z">
+                            </path>
+                        </svg>
+                        <span class="ms-3">Electronics</span>
+                    </a>
+                </li>
+                <!-- Remaining items -->
+            </ul>
+            <div class="flex flex-col gap-4">
+
+            
+            <!-- Sign In Button -->
+            <a [ngClass]="{ '!hidden': isAuthenticated() }"
+                class="flex items-center justify-center w-full p-2 mb-2 font-semibold text-white transition duration-300 bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-4 focus:ring-blue-300"
+                routerLink="/login">
+                <!-- SVG Icon for Sign In -->
+                <svg class="w-5 h-5 mr-2 transition duration-300 text-white" aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 16">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M1 8h11m0 0L8 4m4 4-4 4m4-11h3a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-3" />
+                </svg>
+                <span class="flex-1 whitespace-nowrap">Sign In</span>
+            </a>
+
+            <!-- Sign Up Button -->
+            <a [ngClass]="{ '!hidden': isAuthenticated() }"
+                class="flex items-center justify-center w-full p-2 font-semibold text-white transition duration-300 bg-green-600 rounded-lg hover:bg-green-700 focus:ring-4 focus:ring-green-300"
+                routerLink="/signup">
+                <!-- SVG Icon for Sign Up -->
+                <svg class="w-5 h-5 mr-2 transition duration-300 text-white" aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                    <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.96 2.96 0 0 0 .13 5H5Z"
+                        fill="currentColor" />
+                    <path
+                        d="M6.737 11.061a2.961 2.961 0 0 1 .81-1.515l6.117-6.116A4.839 4.839 0 0 1 16 2.141V2a1.97 1.97 0 0 0-1.933-2H7v5a2 2 0 0 1-2 2H0v11a1.969 1.969 0 0 0 1.933 2h12.134A1.97 1.97 0 0 0 16 18v-3.093l-1.546 1.546c-.413.413-.94.695-1.513.81l-3.4.679a2.947 2.947 0 0 1-1.85-.227 2.96 2.96 0 0 1-1.635-3.257l.681-3.397Z"
+                        fill="currentColor" />
+                    <path
+                        d="M8.961 16a.93.93 0 0 0 .189-.019l3.4-.679a.961.961 0 0 0 .49-.263l6.118-6.117a2.884 2.884 0 0 0-4.079-4.078l-6.117 6.117a.96.96 0 0 0-.263.491l-.679 3.4A.961.961 0 0 0 8.961 16Zm7.477-9.8a.958.958 0 0 1 .68-.281.961.961 0 0 1 .682 1.644l-.315.315-1.36-1.36.313-.318Zm-5.911 5.911 4.236-4.236 1.359 1.359-4.236 4.237-1.7.339.341-1.699Z"
+                        fill="currentColor" />
+                </svg>
+                <span class="flex-1 whitespace-nowrap">Sign Up</span>
+            </a>
+        </div>
+            <button [ngClass]="{ 'hidden': !isAuthenticated() }"
+                class="w-full   flex items-center justify-center space-x-3 px-4 py-2 text-white bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 rounded-md shadow-md transition duration-300 ease-in-out transform hover:scale-105"
+                (click)="modalopn()">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                    stroke="currentColor" class="w-5 h-5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6-4v8" />
+                </svg>
+                <span class="font-medium">Logout</span>
+            </button>
+
+        </div>
+    </aside>
+</div>
+<app-logout-modal *ngIf="isopen"></app-logout-modal>

@@ -1,0 +1,14 @@
+<div class="app-container">
+    <!-- Navbar -->
+    <app-navbar class="fixed top-0 w-full bg-white z-20  md:block"></app-navbar>
+    <!-- Main Content Area -->
+    <div class="flex flex-col md:flex-row mt-16">
+        <!-- Sidebar -->
+        <app-sidebar class="w-[16%] top-12 hiding"></app-sidebar>
+        <!-- Main Content -->
+        <div class="w-full p-4 md:ml-4">
+            <router-outlet></router-outlet>
+            <app-fotter class="bg-gray-100 mt-4"></app-fotter>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+@media(min-width:1024px){
+    .w-change{
+        @apply w-[50px] h-[50px]
+    }
+    .text-cahnge{
+        @apply text-xl
+    }
+}
+
+/* Add smooth transitions */
+.sun-icon, .moon-icon {
+    transition: opacity 0.10s ease-in-out;
+  }
+  
+  .sun-icon.hidden {
+    opacity: 0;
+  }
+  
+  .moon-icon.hidden {
+    opacity: 0;
+  }
+  
+  .sun-icon:not(.hidden) {
+    opacity: 1;
+  }
+  
+  .moon-icon:not(.hidden) {
+    opacity: 1;
+  }
+  

@@ -1,0 +1,63 @@
+  <div class="px-3">
+
+  
+  <div class="relative bg-gray-200 py-10 px-4">
+    <div class="absolute inset-0">
+      <img src="/assets/shopping-trolleys-packets-tags.jpg" alt="Promotional Banner" class="w-full h-full object-cover " />
+    </div>
+    <div class="relative z-10 max-w-4xl mx-auto text-center">
+      <h2 class="text-4xl font-bold  mb-4 text-white">Discover Our Latest Collection</h2>
+      <p class="text-lg text-gray-600 mb-6">Explore our new arrivals and find your perfect match!</p>
+     
+    </div>
+  </div>
+  
+<div class="text-center my-8">
+    <h2 class="text-3xl font-bold flex items-center justify-center gap-2 text-gray-800">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="w-7 h-7 text-teal-500"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M3 4a1 1 0 011-1h16a1 1 0 011 1v16a1 1 0 01-1 1H4a1 1 0 01-1-1V4zm16 2H5v12h14V6z"
+        />
+      </svg>
+      Explore Our Categories
+    </h2>
+    <p class="text-sm text-gray-500 mt-2">
+      Discover a wide range of products tailored to meet your needs, from fashion to electronics and more.
+    </p>
+  </div>
+  
+<!-- Product Grid -->
+<div class="my-10">
+  <div class="grid gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4">
+      <!-- Loop through products -->
+      @for (pro of products; track $index) 
+      { 
+      <div class="bg-gray-100 border border-gray-300 rounded-lg shadow-lg dark:bg-gray-900 dark:border-gray-700 cursor-pointer flex flex-col relative transition-transform transform hover:scale-105 hover:shadow-xl my-8" (click)="sendData($index)">
+          <!-- Make image responsive and adjust its height for different screen sizes -->
+          <img class="rounded-t-lg w-full h-[150px] sm:h-[150px] md:h-[130px] lg:h-[150px] xl:h-[180px] object-center transition-transform transform hover:scale-105" [src]="pro.image" alt="product image" />
+          <div class="flex-1 px-2 md:px-4 pt-4 flex flex-col relative">
+              <!-- Responsive text sizes for title -->
+              <h5 class="md:text-lg lg:text-xl text-sm text-center font-semibold tracking-tight text-gray-900 dark:text-white max-h-[50px] overflow-hidden">{{pro.title}}</h5>
+              <!-- Price container positioned above the button -->
+              <div class="w-full flex flex-col items-center justify-end mt-auto mb-1 relative">
+                  <!-- Responsive text sizes for price -->
+                  <span class="md:text-2xl lg:text-3xl text-sm font-bold text-gray-900 dark:text-white">{{pro.price}} <span class="text-[16px] -ms-1">Rs</span></span>
+                 
+              </div>
+          </div>
+      </div>
+      }
+  </div>
+</div>
+</div>
+
+
