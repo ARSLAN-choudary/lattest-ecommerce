@@ -6,8 +6,8 @@
       <img src="/assets/shopping-trolleys-packets-tags.jpg" alt="Promotional Banner" class="w-full h-full object-cover " />
     </div>
     <div class="relative z-10 max-w-4xl mx-auto text-center">
-      <h2 class="text-4xl font-bold  mb-4 text-white">Discover Our Latest Collection</h2>
-      <p class="text-lg text-gray-600 mb-6">Explore our new arrivals and find your perfect match!</p>
+      <h2 class="text-4xl font-bold  mb-4  dark:!text-white">Discover Our Latest Collection</h2>
+      <p class="text-lg text-gray-600 mb-6 dark:!text-white">Explore our new arrivals and find your perfect match!</p>
      
     </div>
   </div>
@@ -41,7 +41,7 @@
       <!-- Loop through products -->
       @for (pro of products; track $index) 
       { 
-      <div class="bg-gray-100 border border-gray-300 rounded-lg shadow-lg dark:bg-gray-900 dark:border-gray-700 cursor-pointer flex flex-col relative transition-transform transform hover:scale-105 hover:shadow-xl my-8" (click)="sendData($index)">
+      <div class="bg-gray-100 border border-gray-300 rounded-lg shadow-lg dark:bg-purple-950 dark:border-gray-700 cursor-pointer flex flex-col relative transition-transform transform hover:scale-105 hover:shadow-xl my-8" (click)="sendData($index)">
           <!-- Make image responsive and adjust its height for different screen sizes -->
           <img class="rounded-t-lg w-full h-[150px] sm:h-[150px] md:h-[130px] lg:h-[150px] xl:h-[180px] object-center transition-transform transform hover:scale-105" [src]="pro.image" alt="product image" />
           <div class="flex-1 px-2 md:px-4 pt-4 flex flex-col relative">
